@@ -31,12 +31,7 @@ namespace kindergartenNetwork.Models
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public int ViewsCount { get; set; }
         public int Status { get; set; }
-        public Nullable<System.DateTime> ActionDate { get; set; }
-        public Nullable<int> ActionBy { get; set; }
-        public int LangId { get; set; }
         public string Image { get; set; }
-        public string HomePosition { get; set; }
-        public bool IsInHome { get; set; }
         public int CategoryId { get; set; }
         public bool IsDeleted { get; set; }
         public string Keywords { get; set; }
@@ -46,9 +41,9 @@ namespace kindergartenNetwork.Models
         public virtual Category Category { get; set; }
         public virtual UserAccount UserAccount { get; set; }
         public virtual UserAccount UserAccount1 { get; set; }
-        public virtual UserAccount UserAccount2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NewskeyWord> NewskeyWords { get; set; }
+
         [DataType(DataType.Date), DisplayFormat(DataFormatString = @"{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? FromDate { get; set; }
         [DataType(DataType.Date), DisplayFormat(DataFormatString = @"{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]

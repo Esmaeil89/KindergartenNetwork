@@ -4,34 +4,33 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="08982b5458564dabad249fa0e1049495" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="kindergartenNetworkModel.AppSetting" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.Attachment" Width="1.5" PointX="7.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.Constant" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.ContactU" Width="1.5" PointX="2.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.Destination" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.ErrorsLog" Width="1.5" PointX="4.75" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.ImportantLink" Width="1.5" PointX="6.75" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.Medium" Width="1.5" PointX="8" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.MediaAlbum" Width="1.5" PointX="5.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.News" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.NewskeyWord" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.Page" Width="1.5" PointX="8.75" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.PagesCategory" Width="1.5" PointX="10.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.SocialNW" Width="1.5" PointX="10.75" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.StaticPage" Width="1.5" PointX="10.75" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.UserAccount" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.UserType" Width="1.5" PointX="11.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.UserTypePage" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+      <Diagram DiagramId="81df7db65889463aad6bcb7abc9c771a" Name="Diagram1">
+        <EntityTypeShape EntityType="kindergartenNetworkModel.AppSetting" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.Attachment" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.Category" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.Constant" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.ContactU" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.Destination" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.ErrorsLog" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.ImportantLink" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.Medium" Width="1.5" PointX="8" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.MediaAlbum" Width="1.5" PointX="5.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.News" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.NewskeyWord" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.Page" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.PagesCategory" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.SocialNW" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.StaticPage" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.UserAccount" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.UserType" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.UserTypePage" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kindergartenNetworkModel.WorkTeam" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
         <AssociationConnector Association="kindergartenNetworkModel.FKNews532180" ManuallyRouted="false" />
         <AssociationConnector Association="kindergartenNetworkModel.FKMedia202654" ManuallyRouted="false" />
         <AssociationConnector Association="kindergartenNetworkModel.FK_News_UserAccounts" ManuallyRouted="false" />
-        <AssociationConnector Association="kindergartenNetworkModel.FK_News_UserAccounts1" ManuallyRouted="false" />
         <AssociationConnector Association="kindergartenNetworkModel.FK_News_UserAccounts2" ManuallyRouted="false" />
         <AssociationConnector Association="kindergartenNetworkModel.FKNewskeyWor16511" ManuallyRouted="false" />
-        <AssociationConnector Association="kindergartenNetworkModel.FK_UserAccounts_UserType" />
-        <EntityTypeShape EntityType="kindergartenNetworkModel.WorkTeam" Width="1.5" PointX="13.375" PointY="5.75" />
+        <AssociationConnector Association="kindergartenNetworkModel.FK_UserAccounts_UserType" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -36,23 +36,6 @@
                     <input type="hidden" value="@Model.ONews.Id" Name="Id" id="newsId" data-field="" />
                     <input type="hidden" value="@ViewBag.CategoryId" name="CategoryId" id="hdCategoryId" />
                     <div class="form-group">
-                        <label class="col-md-1 control-label">@kindergartenNetwork.Resources.PublicNews.Language</label>
-                        <div class="col-md-3">
-                            <div class="formElement">
-                                <select class="selectpicker form-control" name="LangId" data-field="@kindergartenNetwork.Resources.PublicNews.Language" title="@kindergartenNetwork.Resources.PublicNews.Language">
-                                    <option @(Model.ONews.LangId == 1 ? "selected" : "") value="1">@kindergartenNetwork.Resources.PublicNews.Arabic</option>
-                                    <option @(Model.ONews.LangId == 2 ? "selected" : "") value="2">@kindergartenNetwork.Resources.PublicNews.English</option>
-                                </select>
-                            </div>
-                        </div>
-                        <label class="col-md-2 control-label">@kindergartenNetwork.Resources.PublicNews.PublishDate</label>
-                        <div class="col-md-3">
-                            <div class="formElement">
-                                <input type="text" id="tbPublishDate" autocomplete="off" value="@(Model.ONews.PublishDate != DateTime.MinValue ?  Model.ONews.PublishDate.ToString("yyyy-MM-dd hh:mm") : DateTime.UtcNow.ToString("yyyy-MM-dd hh:mm"))" name="PublishDate" class="form-control" placeholder="@kindergartenNetwork.Resources.PublicNews.PublishDate" data-field="@kindergartenNetwork.Resources.PublicNews.PublishDate" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label class="col-md-1 control-label">@kindergartenNetwork.Resources.PublicNews.Address</label>
                         <div class="col-md-11">
                             <div class="formElement">
@@ -109,23 +92,6 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-1 control-label"></label>
-                        <div class="col-md-3">
-                            <div class="mt-checkbox-inline">
-                                <label class="mt-checkbox">
-                                    <input type="checkbox" id="cbIsInHome" name="IsInHome" value="true" @(Model.ONews.IsInHome ? "checked" : "")>@kindergartenNetwork.Resources.PublicNews.InMainPage
-                                    <span></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="formElement" style="display :@(string.IsNullOrEmpty(Model.ONews.HomePosition) ?"none":"block" )">
-                                <select class="selectpicker form-control " id="ddlHomePosition" name="HomePosition1" data-field="@kindergartenNetwork.Resources.PublicNews.InMainPage" title="@kindergartenNetwork.Resources.PublicNews.InMainPage" multiple>
-                                    @*<option value="1" @(!string.IsNullOrEmpty(Model.ONews.HomePosition) ? (Model.ONews.HomePosition.Split(',').Contains(Convert.ToString(1)) ? "selected" : ""):"" )>شريط الأخبار العاجلة</option>*@
-                                    <option value="2" @(!string.IsNullOrEmpty(Model.ONews.HomePosition) ? (Model.ONews.HomePosition.Split(',').Contains(Convert.ToString(2)) ? "selected" : "") : "" )>@kindergartenNetwork.Resources.PublicNews.AnimatedImagesLine</option>
-                                    <option value="3" @(!string.IsNullOrEmpty(Model.ONews.HomePosition) ? (Model.ONews.HomePosition.Split(',').Contains(Convert.ToString(3)) ? "selected" : "") : "" )>@kindergartenNetwork.Resources.PublicNews.InMainCategories</option>
-                                </select>
-                            </div>
-                        </div>
                         <div class="col-md-2">
                             <div class="mt-checkbox-inline">
                                 <label class="mt-checkbox">

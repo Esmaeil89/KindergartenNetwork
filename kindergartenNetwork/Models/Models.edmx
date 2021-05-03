@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="kindergartenNetworkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="kindergartenNetworkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AppSettings">
           <Key>
             <PropertyRef Name="ConKey" />
@@ -141,12 +141,7 @@
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="ViewsCount" Type="int" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
-          <Property Name="ActionDate" Type="datetime" />
-          <Property Name="ActionBy" Type="int" />
-          <Property Name="LangId" Type="int" Nullable="false" />
           <Property Name="Image" Type="nvarchar" MaxLength="255" />
-          <Property Name="HomePosition" Type="nvarchar" MaxLength="50" />
-          <Property Name="IsInHome" Type="bit" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="Keywords" Type="nvarchar" MaxLength="1000" />
@@ -165,7 +160,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="NameEn" Type="nvarchar" MaxLength="50" />
           <Property Name="Link" Type="nvarchar" MaxLength="50" />
@@ -213,7 +208,7 @@
           <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="Email1" Type="nvarchar" MaxLength="50" />
-          <Property Name="Email2" Type="nchar" MaxLength="10" />
+          <Property Name="Email2" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UserAccounts">
           <Key>
@@ -269,18 +264,6 @@
             </Principal>
             <Dependent Role="News">
               <PropertyRef Name="InsertedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_News_UserAccounts1">
-          <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="0..1" />
-          <End Role="News" Type="Self.News" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserAccounts">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="News">
-              <PropertyRef Name="ActionBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -369,10 +352,6 @@
             <End Role="UserAccounts" EntitySet="UserAccounts" />
             <End Role="News" EntitySet="News" />
           </AssociationSet>
-          <AssociationSet Name="FK_News_UserAccounts1" Association="Self.FK_News_UserAccounts1">
-            <End Role="UserAccounts" EntitySet="UserAccounts" />
-            <End Role="News" EntitySet="News" />
-          </AssociationSet>
           <AssociationSet Name="FK_News_UserAccounts2" Association="Self.FK_News_UserAccounts2">
             <End Role="UserAccounts" EntitySet="UserAccounts" />
             <End Role="News" EntitySet="News" />
@@ -394,7 +373,8 @@
             <End Role="NewskeyWords" EntitySet="NewskeyWords" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="kindergartenNetworkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -537,12 +517,7 @@
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="ViewsCount" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="ActionDate" Type="DateTime" Precision="3" />
-          <Property Name="ActionBy" Type="Int32" />
-          <Property Name="LangId" Type="Int32" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="HomePosition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsInHome" Type="Boolean" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="Keywords" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
@@ -550,8 +525,7 @@
           <Property Name="PublishDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Category" Relationship="Self.FKNews532180" FromRole="News" ToRole="Categories" />
           <NavigationProperty Name="UserAccount" Relationship="Self.FK_News_UserAccounts" FromRole="News" ToRole="UserAccounts" />
-          <NavigationProperty Name="UserAccount1" Relationship="Self.FK_News_UserAccounts1" FromRole="News" ToRole="UserAccounts" />
-          <NavigationProperty Name="UserAccount2" Relationship="Self.FK_News_UserAccounts2" FromRole="News" ToRole="UserAccounts" />
+          <NavigationProperty Name="UserAccount1" Relationship="Self.FK_News_UserAccounts2" FromRole="News" ToRole="UserAccounts" />
           <NavigationProperty Name="NewskeyWords" Relationship="Self.FKNewskeyWor16511" FromRole="News" ToRole="NewskeyWords" />
         </EntityType>
         <EntityType Name="NewskeyWord">
@@ -604,18 +578,18 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedBy" Type="Int32" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-          <Property Name="PageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Image2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="image3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email2" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Email2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -635,9 +609,8 @@
           <Property Name="ManagerGroupId" Type="Int32" Nullable="false" />
           <Property Name="TraceUserActivity" Type="Boolean" />
           <NavigationProperty Name="News" Relationship="Self.FK_News_UserAccounts" FromRole="UserAccounts" ToRole="News" />
-          <NavigationProperty Name="News1" Relationship="Self.FK_News_UserAccounts1" FromRole="UserAccounts" ToRole="News" />
-          <NavigationProperty Name="News2" Relationship="Self.FK_News_UserAccounts2" FromRole="UserAccounts" ToRole="News" />
-          <NavigationProperty Name="UserType" Relationship="kindergartenNetworkModel.FK_UserAccounts_UserType" FromRole="UserAccount" ToRole="UserType" />
+          <NavigationProperty Name="News1" Relationship="Self.FK_News_UserAccounts2" FromRole="UserAccounts" ToRole="News" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_UserAccounts_UserType" FromRole="UserAccounts" ToRole="UserType" />
         </EntityType>
         <EntityType Name="UserType">
           <Key>
@@ -646,7 +619,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="UserAccounts" Relationship="kindergartenNetworkModel.FK_UserAccounts_UserType" FromRole="UserType" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccounts" Relationship="Self.FK_UserAccounts_UserType" FromRole="UserType" ToRole="UserAccounts" />
         </EntityType>
         <EntityType Name="UserTypePage">
           <Key>
@@ -655,6 +628,17 @@
           </Key>
           <Property Name="PageId" Type="Int32" Nullable="false" />
           <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LinkedInUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FaceBookUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="InstgramUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FKNews532180">
           <End Role="Categories" Type="Self.Category" Multiplicity="1" />
@@ -692,18 +676,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_News_UserAccounts1">
-          <End Role="UserAccounts" Type="Self.UserAccount" Multiplicity="0..1" />
-          <End Role="News" Type="Self.News" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserAccounts">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="News">
-              <PropertyRef Name="ActionBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_News_UserAccounts2">
           <End Role="UserAccounts" Type="Self.UserAccount" Multiplicity="1" />
           <End Role="News" Type="Self.News" Multiplicity="*" />
@@ -728,6 +700,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserAccounts_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <End Role="UserAccounts" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccounts">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="kindergartenNetworkEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AppSettings" EntityType="Self.AppSetting" />
           <EntitySet Name="Attachments" EntityType="Self.Attachment" />
@@ -748,6 +732,7 @@
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
           <EntitySet Name="UserTypes" EntityType="Self.UserType" />
           <EntitySet Name="UserTypePages" EntityType="Self.UserTypePage" />
+          <EntitySet Name="WorkTeams" EntityType="Self.WorkTeam" />
           <AssociationSet Name="FKNews532180" Association="Self.FKNews532180">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="News" EntitySet="News" />
@@ -760,10 +745,6 @@
             <End Role="UserAccounts" EntitySet="UserAccounts" />
             <End Role="News" EntitySet="News" />
           </AssociationSet>
-          <AssociationSet Name="FK_News_UserAccounts1" Association="Self.FK_News_UserAccounts1">
-            <End Role="UserAccounts" EntitySet="UserAccounts" />
-            <End Role="News" EntitySet="News" />
-          </AssociationSet>
           <AssociationSet Name="FK_News_UserAccounts2" Association="Self.FK_News_UserAccounts2">
             <End Role="UserAccounts" EntitySet="UserAccounts" />
             <End Role="News" EntitySet="News" />
@@ -772,35 +753,11 @@
             <End Role="News" EntitySet="News" />
             <End Role="NewskeyWords" EntitySet="NewskeyWords" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserAccounts_UserType" Association="kindergartenNetworkModel.FK_UserAccounts_UserType">
+          <AssociationSet Name="FK_UserAccounts_UserType" Association="Self.FK_UserAccounts_UserType">
             <End Role="UserType" EntitySet="UserTypes" />
-            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="UserAccounts" EntitySet="UserAccounts" />
           </AssociationSet>
-          <EntitySet Name="WorkTeams" EntityType="kindergartenNetworkModel.WorkTeam" />
         </EntityContainer>
-        <Association Name="FK_UserAccounts_UserType">
-          <End Type="kindergartenNetworkModel.UserType" Role="UserType" Multiplicity="0..1" />
-          <End Type="kindergartenNetworkModel.UserAccount" Role="UserAccount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserAccount">
-              <PropertyRef Name="UserTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="WorkTeam">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="JobTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="LinkedInUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="FaceBookUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="InstgramUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -951,12 +908,7 @@
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="ViewsCount" ColumnName="ViewsCount" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
-                <ScalarProperty Name="ActionBy" ColumnName="ActionBy" />
-                <ScalarProperty Name="LangId" ColumnName="LangId" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="HomePosition" ColumnName="HomePosition" />
-                <ScalarProperty Name="IsInHome" ColumnName="IsInHome" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Keywords" ColumnName="Keywords" />
@@ -1015,19 +967,19 @@
           <EntitySetMapping Name="StaticPages">
             <EntityTypeMapping TypeName="kindergartenNetworkModel.StaticPage">
               <MappingFragment StoreEntitySet="StaticPages">
-                <ScalarProperty Name="Email2" ColumnName="Email2" />
-                <ScalarProperty Name="Email1" ColumnName="Email1" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="image3" ColumnName="image3" />
-                <ScalarProperty Name="Image2" ColumnName="Image2" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="PageName" ColumnName="PageName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Image2" ColumnName="Image2" />
+                <ScalarProperty Name="image3" ColumnName="image3" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1070,12 +1022,12 @@
           <EntitySetMapping Name="WorkTeams">
             <EntityTypeMapping TypeName="kindergartenNetworkModel.WorkTeam">
               <MappingFragment StoreEntitySet="WorkTeam">
-                <ScalarProperty Name="InstgramUrl" ColumnName="InstgramUrl" />
-                <ScalarProperty Name="FaceBookUrl" ColumnName="FaceBookUrl" />
-                <ScalarProperty Name="LinkedInUrl" ColumnName="LinkedInUrl" />
-                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="LinkedInUrl" ColumnName="LinkedInUrl" />
+                <ScalarProperty Name="FaceBookUrl" ColumnName="FaceBookUrl" />
+                <ScalarProperty Name="InstgramUrl" ColumnName="InstgramUrl" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

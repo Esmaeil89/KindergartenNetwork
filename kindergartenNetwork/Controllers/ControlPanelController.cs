@@ -360,7 +360,7 @@ namespace kindergartenNetwork.Controllers
             var sorts = new Sorts<Category>();
             sorts.Add(dtProcess.SortCol == "Id", x => x.Id);
 
-            var getCategory = _db.Categories.Paginate(dtProcess.Page, dtProcess.RowPerPage, sorts, filters);
+            var getCategory = _db.Categories.Paginate(dtProcess.Page, 100, sorts, filters);
 
 
             if (getCategory.RecordCount > 0)
@@ -467,7 +467,10 @@ namespace kindergartenNetwork.Controllers
             var category = _db.Categories.First(x => x.Id == id);
             if (category != null)
             {
-                var oResult = _db.Categories.Remove(category);
+                _db.Categories.Attach(category);
+                category.IsDeleted = true;
+                _db.Entry(category).Property(x => x.IsDeleted).IsModified = true;
+                _db.SaveChanges();
                 cStatus = "success";
                 cMsg = Resources.NotifyMsg.DeleteSuccessMsg;
             }
@@ -524,8 +527,8 @@ namespace kindergartenNetwork.Controllers
 
             var filters = new Filters<News>();
             filters.Add(oNews.Id > 0, x => x.Id == oNews.Id);
-            filters.Add(oNews.FromDate != new DateTime(), x => x.PublishDate >= oNews.FromDate);
-            filters.Add(oNews.ToDate != new DateTime(), x => x.PublishDate <= oNews.ToDate);
+            filters.Add(oNews.FromDate != new DateTime() && oNews.FromDate != null, x => x.PublishDate >= oNews.FromDate);
+            filters.Add(oNews.ToDate != new DateTime() && oNews.ToDate != null, x => x.PublishDate <= oNews.ToDate);
             filters.Add(!string.IsNullOrEmpty(oNews.Title), x => x.Title.Contains(oNews.Title));
             filters.Add(true, x => x.IsDeleted == false);
             filters.Add(true, x => x.CategoryId == 1);
@@ -549,17 +552,10 @@ namespace kindergartenNetwork.Controllers
                              {
                                  q.Id,
                                  q.IsActive,
-                                 //q.ActionBy,
-                                 //q.ActionDate,
                                  q.CategoryId,
-                                 //q.Details,
                                  q.Image,
-                                 q.LangId,
                                  q.Status,
-                                 //q.Summary,
                                  q.Title,
-                                 //q.SavedBy,
-                                 //q.SavedDate,
                                  q.ViewsCount,
                                  q.InsertedBy,
                                  PublishDate = q.PublishDate.ToString("yyyy-MM-dd HH:mm:ss"),
@@ -589,17 +585,10 @@ namespace kindergartenNetwork.Controllers
                              {
                                  q.Id,
                                  q.IsActive,
-                                 //q.ActionBy,
-                                 //q.ActionDate,
                                  q.CategoryId,
-                                 //q.Details,
                                  q.Image,
-                                 q.LangId,
                                  q.Status,
-                                 //q.Summary,
                                  q.Title,
-                                 //q.SavedBy,
-                                 //q.SavedDate,
                                  q.ViewsCount,
                                  q.InsertedBy,
                                  PublishDate = q.PublishDate.ToString("yyyy-MM-dd HH:mm:ss"),
@@ -642,8 +631,6 @@ namespace kindergartenNetwork.Controllers
             var cMsg = Resources.NotifyMsg.ErrorMsg;
             if (ModelState.IsValid)
             {
-                if (!oNews.IsInHome)
-                    oNews.HomePosition = "";
                 if (oNews.Id > 0)
                 {
                     var news = _db.News.First(x => x.Id == oNews.Id);
@@ -654,8 +641,6 @@ namespace kindergartenNetwork.Controllers
                         news.Summary = oNews.Summary;
                         news.Details = oNews.Details;
                         news.Image = oNews.Image;
-                        news.HomePosition = oNews.HomePosition;
-                        news.IsInHome = oNews.IsInHome;
                         news.IsActive = oNews.IsActive;
                         news.UpdatedBy = User.Id;
                         news.UpdatedDate = DateTime.Now;
@@ -663,15 +648,13 @@ namespace kindergartenNetwork.Controllers
                         _db.Entry(news).Property(x => x.Summary).IsModified = true;
                         _db.Entry(news).Property(x => x.Details).IsModified = true;
                         _db.Entry(news).Property(x => x.Image).IsModified = true;
-                        _db.Entry(news).Property(x => x.HomePosition).IsModified = true;
-                        _db.Entry(news).Property(x => x.IsInHome).IsModified = true;
                         _db.Entry(news).Property(x => x.IsActive).IsModified = true;
                         _db.Entry(news).Property(x => x.UpdatedBy).IsModified = true;
                         _db.Entry(news).Property(x => x.UpdatedDate).IsModified = true;
                         _db.SaveChanges();
                         cStatus = "success";
                         cMsg = Resources.NotifyMsg.SaveSuccessMsg;
-                        return Json(new { cStatus, cMsg }, JsonRequestBehavior.AllowGet);
+                        return Json(new { cStatus, cMsg, id = oNews.Id }, JsonRequestBehavior.AllowGet);
                     }
                 }
                 else

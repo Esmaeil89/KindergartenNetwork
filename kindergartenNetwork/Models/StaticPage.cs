@@ -15,12 +15,12 @@ namespace kindergartenNetwork.Models
     public partial class StaticPage
     {
         public int Id { get; set; }
-        public string Image { get; set; }
-        public Nullable<int> UpdatedBy { get; set; }
-        public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string PageName { get; set; }
         public string Description { get; set; }
         public string Title { get; set; }
+        public string Image { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string Image2 { get; set; }
         public string image3 { get; set; }
         public string Mobile { get; set; }

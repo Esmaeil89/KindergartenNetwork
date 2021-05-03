@@ -19,7 +19,6 @@ namespace kindergartenNetwork.Models
         {
             this.News = new HashSet<News>();
             this.News1 = new HashSet<News>();
-            this.News2 = new HashSet<News>();
         }
     
         public int Id { get; set; }
@@ -40,8 +39,6 @@ namespace kindergartenNetwork.Models
         public virtual ICollection<News> News { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<News> News1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<News> News2 { get; set; }
         public virtual UserType UserType { get; set; }
     }
 }

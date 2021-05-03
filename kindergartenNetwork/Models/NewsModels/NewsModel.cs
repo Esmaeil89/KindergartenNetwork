@@ -21,6 +21,10 @@ namespace kindergartenNetwork.Models.NewsModels
     }
     public class CategoryModel
     {
+        public CategoryModel()
+        {
+            OCategory = new Category();
+        }
         public Category OCategory { get; set; }
     }
 }
