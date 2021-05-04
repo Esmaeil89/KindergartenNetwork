@@ -7621,6 +7621,7 @@
     <Content Include="Models\Models.edmx.diagram">
       <DependentUpon>Models.edmx</DependentUpon>
     </Content>
+    <Content Include="db-4-5-2021.bak" />
     <None Include="Scripts\default\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\default\jquery-3.4.1.js" />
     <Content Include="Scripts\default\jquery-3.4.1.min.js" />
